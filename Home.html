@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Machine Translation</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Machine Translation</h1>
+        <form action="/translate" method="post">
+            <div id="inputContainer">
+                <label for="textInput">Enter English Text:</label>
+                <textarea id="textInput" name="input_text" rows="4" cols="50"></textarea>
+                <button type="submit">Translate</button>
+            </div>
+            <div id="outputContainer">
+                <p id="outputText">{{ translated_text }}</p>
+            </div>
+            <div id="languageSelect">
+                <label for="language">Select Language:</label>
+                <select id="language" name="language">
+                    <option value="hindi">Hindi</option>
+                    <option value="marathi">Marathi</option>
+                </select>
+                <!-- Add a hidden input field to store the selected language -->
+                <input type="hidden" name="selected_language" id="selected_language">
+            </div>
+        </form>
+    </div>
+    <script src="../static/script.js"></script>
+    <script>
+        // JavaScript to update the hidden input field with the selected language
+        document.getElementById("language").addEventListener("change", function() {
+            document.getElementById("selected_language").value = this.value;
+        });
+    </script>
+</body>
+</html>
